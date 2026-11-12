@@ -7,10 +7,8 @@ import CategorySection from "@/components/home/CategorySection";
 import BrandsSection from "@/components/home/BrandsSection";
 import ProductCatalogueSection from "@/components/home/ProductCatalogueSection";
 import ProductStorySection from "@/components/home/ProductStorySection";
-import LifecycleServicesSection from "@/components/home/LifecycleServicesSection";
-import IndustriesSection from "@/components/home/IndustriesSection";
 import TrustCapabilitySection from "@/components/home/TrustCapabilitySection";
-import ResourcesSection from "@/components/home/ResourcesSection";
+import InstructionalVideosSection from "@/components/home/InstructionalVideosSection";
 import ContactSection from "@/components/home/ContactSection";
 import { categories, industries, products, services } from "@/data/catalogue";
 import { useSearchContext } from "@/context/SearchContext";
@@ -94,13 +92,10 @@ export default function HomePage() {
 
       <ProductStorySection />
 
-      <LifecycleServicesSection services={services} />
-
-      <IndustriesSection industries={industries} />
 
       <TrustCapabilitySection />
 
-      <ResourcesSection />
+      <InstructionalVideosSection />
 
       <ContactSection />
     </main>

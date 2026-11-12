@@ -1,6 +1,7 @@
 "use client";
 
-import { X, Search } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Search, RotateCw, X } from "lucide-react";
 import { CategoryItem, ProductCategory } from "@/types/catalogue";
 
 type SearchModalProps = {
@@ -12,6 +13,26 @@ type SearchModalProps = {
   onSelectCategory: (category: ProductCategory) => void;
 };
 
+const defaultRecommendations = [
+  "Electric chain hoist 2t",
+  "Overhead bridge crane",
+  "Manual chain block",
+  "Wire rope hoists",
+  "Radio remote transmitter",
+  "Motor VFD drive",
+  "End trucks & wheel sets",
+];
+
+const alternativeRecommendations = [
+  "Portal gantry crane",
+  "Load testing & certification",
+  "Spreader lifting beam",
+  "Pendant control stations",
+  "Conductor bar electrification",
+  "Explosion proof hoists",
+  "Hook blocks & sheaves",
+];
+
 export default function SearchModal({
   isOpen,
   onClose,
@@ -20,56 +41,142 @@ export default function SearchModal({
   categories,
   onSelectCategory,
 }: SearchModalProps) {
+  const [recommendations, setRecommendations] = useState(defaultRecommendations);
+  const [isRotating, setIsRotating] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+    }
+  }, [isOpen]);
+
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  const handleRefresh = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsRotating(true);
+    setTimeout(() => {
+      setRecommendations((prev) =>
+        prev === defaultRecommendations
+          ? alternativeRecommendations
+          : defaultRecommendations
+      );
+      setIsRotating(false);
+    }, 250);
+  };
+
+  const handleExecuteSearch = (query: string) => {
+    onSearchChange(query);
+    onClose();
+    const target = document.getElementById("products");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      handleExecuteSearch(searchQuery);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#F4F2ED]">
-      <div className="mx-auto max-w-[1400px] px-6 py-8 lg:px-10">
-        <div className="flex items-center justify-between">
-          <img
-            src="/logo/logo.png"
-            alt="Kranemann"
-            className="h-9 w-auto object-contain"
-          />
+    <div className="fixed inset-0 z-[100] flex items-start justify-center bg-black/45 backdrop-blur-[2px] px-4 pt-16 sm:pt-20">
+      <div
+        ref={containerRef}
+        className="relative w-full max-w-xl overflow-hidden rounded-lg border border-[#E5E1D8] bg-white animate-in fade-in-0 zoom-in-95 duration-200"
+      >
+        {/* Top Search Input Box */}
+        <div className="border-b border-[#E5E1D8] bg-white p-4 sm:p-5">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <div className="flex items-center justify-between">
+              <input
+                ref={inputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                placeholder="What are you looking for?"
+                className="w-full bg-transparent text-base font-normal text-[#25282A] outline-none placeholder:text-[#747773] sm:text-lg"
+              />
+              <button
+                type="button"
+                onClick={onClose}
+                className="ml-2 text-[#747773] hover:text-[#25282A] p-1 transition-colors"
+                aria-label="Close"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
 
-          <button
-            onClick={onClose}
-            className="flex h-11 w-11 items-center justify-center text-[#25282A] transition-colors hover:text-[#E46A2A]"
-            aria-label="Close search"
-          >
-            <X className="h-6 w-6" />
-          </button>
+            <div className="flex items-center justify-end pt-1">
+              {/* Orange Action Search Button */}
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 rounded-md bg-[#E46A2A] px-6 py-2 text-sm font-medium text-white transition-all hover:bg-[#C95720] active:scale-95"
+              >
+                <Search className="h-4 w-4 stroke-[2.5]" />
+                <span>Search</span>
+              </button>
+            </div>
+          </form>
         </div>
 
-        <div className="mx-auto mt-24 max-w-4xl">
-          <p className="mb-5 text-sm text-[#747773]">Product search</p>
-
-          <div className="flex items-center border-b-2 border-[#25282A] pb-5">
-            <Search className="mr-5 h-7 w-7 text-[#747773]" />
-
-            <input
-              autoFocus
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search cranes, hoists, parts..."
-              className="w-full bg-transparent text-3xl text-[#25282A] outline-none placeholder:text-[#747773]/60 lg:text-5xl"
-            />
+        {/* Bottom Recommendations Dropdown Card */}
+        <div className="bg-white px-5 py-5 sm:px-6">
+          <div className="flex items-center justify-between border-b border-[#E5E1D8]/40 pb-3">
+            <span className="text-sm font-semibold tracking-tight text-[#25282A]">
+              Recommended for you
+            </span>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            {categories.slice(1).map((category) => (
+          {/* List of Recommended Items */}
+          <div className="mt-2 divide-y divide-[#E5E1D8]/10">
+            {recommendations.map((item) => (
               <button
-                key={category.name}
-                onClick={() => {
-                  onSelectCategory(category.name);
-                  onClose();
-                  document
-                    .getElementById("products")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="border border-[#25282A]/20 bg-white px-4 py-3 text-sm text-[#25282A] transition-colors hover:border-[#E46A2A] hover:text-[#E46A2A]"
+                key={item}
+                type="button"
+                onClick={() => handleExecuteSearch(item)}
+                className="group flex w-full items-center justify-between py-2.5 text-left text-sm text-[#25282A] transition-colors hover:text-[#E46A2A]"
               >
-                {category.name}
+                <span className="transition-transform group-hover:translate-x-1">
+                  {item}
+                </span>
+                <span className="text-xs text-[#747773] opacity-0 transition-opacity group-hover:opacity-100">
+                  Search ↵
+                </span>
               </button>
             ))}
           </div>
@@ -78,4 +185,3 @@ export default function SearchModal({
     </div>
   );
 }
-

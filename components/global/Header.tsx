@@ -55,14 +55,14 @@ export default function Header({ onOpenSearch }: HeaderProps) {
   };
 
   return (
-    <header className="absolute left-0 top-0 z-50 w-full bg-[#25282A] text-white">
+    <header className="sticky top-0 z-50 w-full bg-[#25282A] text-white shadow-md">
       {/* Top Main Navigation Bar */}
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 lg:px-10">
         <a href="#" className="shrink-0">
           <img
             src="/logo/logo.png"
             alt="Kranemann"
-            className="h-20 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
         </a>
 
@@ -161,7 +161,7 @@ export default function Header({ onOpenSearch }: HeaderProps) {
                   onClick={() => handleCategoryClick(item.matchingCategory)}
                   className={`inline-flex shrink-0 items-center px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-colors ${isSelected
                     ? "bg-[#E46A2A] text-white"
-                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                    : "text-white/80 hover:bg-white/10 rounded-md hover:text-white"
                     }`}
                 >
                   {item.title}

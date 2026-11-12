@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
 
 export const brandLogos = [
   { id: 1, name: "Brand 1", src: "/products/brands/brand1.png" },
@@ -45,28 +46,31 @@ export default function BrandsSection({
   return (
     <section className="bg-white py-14 lg:py-16">
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-[#25282A] sm:text-4xl lg:text-5xl">
-              Select brand to view products & parts.
-            </h2>
-          </div>
+        <Reveal>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-[#25282A] sm:text-4xl lg:text-5xl">
+                Select brand to view products & parts.
+              </h2>
+            </div>
 
-          <Button
-            href="#products"
-            variant="tertiary"
-            color="dark"
-            size="md"
-            icon={<ArrowRight className="h-4 w-4 text-[#E46A2A]" />}
-            iconPosition="right"
-          >
-            View all products
-          </Button>
-        </div>
+            <Button
+              href="#products"
+              variant="tertiary"
+              color="dark"
+              size="md"
+              icon={<ArrowRight className="h-4 w-4 text-[#E46A2A]" />}
+              iconPosition="right"
+            >
+              View all products
+            </Button>
+          </div>
+        </Reveal>
 
         {/* Brands Interactive Grid */}
-        <div className="mt-10 grid grid-cols-2 gap-px bg-[#E5E1D8] sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6">
-          {brandLogos.map((brand) => {
+        <Reveal delayMs={150}>
+          <div className="mt-10 grid grid-cols-2 gap-px bg-[#E5E1D8] sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6">
+            {brandLogos.map((brand) => {
             const isSelected = selectedBrand === brand.name;
 
             return (
@@ -109,6 +113,7 @@ export default function BrandsSection({
             </span>
           </button>
         </div>
+        </Reveal>
       </div>
     </section>
   );

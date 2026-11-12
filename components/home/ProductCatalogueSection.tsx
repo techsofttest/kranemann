@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import ProductCard from "@/components/ui/ProductCard";
 import { Button } from "@/components/ui/Button";
 import { Product } from "@/types/catalogue";
+import Reveal from "@/components/ui/Reveal";
 
 type ProductCatalogueSectionProps = {
   filteredProducts: Product[];
@@ -23,34 +24,37 @@ export default function ProductCatalogueSection({
   return (
     <section id="products" className="scroll-mt-10 bg-[#F4F2ED]">
       <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-10 lg:py-20">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-[#25282A] sm:text-4xl lg:text-5xl">
-              Most selling products.
-            </h2>
-          </div>
+        <Reveal>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-[#25282A] sm:text-4xl lg:text-5xl">
+                Most selling products.
+              </h2>
+            </div>
 
-          <Button
-            href="#contact"
-            variant="tertiary"
-            color="dark"
-            size="md"
-            icon={<ArrowRight className="h-4 w-4 text-[#E46A2A]" />}
-            iconPosition="right"
-          >
-            Request technical quote
-          </Button>
-        </div>
+            <Button
+              href="#contact"
+              variant="tertiary"
+              color="dark"
+              size="md"
+              icon={<ArrowRight className="h-4 w-4 text-[#E46A2A]" />}
+              iconPosition="right"
+            >
+              Request technical quote
+            </Button>
+          </div>
+        </Reveal>
 
         {/* Product grid */}
         <div className="mt-12 grid gap-x-3 gap-y-6 sm:grid-cols-2 lg:grid-cols-5">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              selectedForCompare={compareProducts.includes(product.id)}
-              onToggleCompare={onToggleCompare}
-            />
+          {filteredProducts.map((product, index) => (
+            <Reveal key={product.id} delayMs={(index % 5) * 60} className="h-full">
+              <ProductCard
+                product={product}
+                selectedForCompare={compareProducts.includes(product.id)}
+                onToggleCompare={onToggleCompare}
+              />
+            </Reveal>
           ))}
         </div>
 

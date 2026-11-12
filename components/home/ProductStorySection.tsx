@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
 
 export default function ProductStorySection() {
   return (
@@ -18,7 +19,7 @@ export default function ProductStorySection() {
       <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-16 pt-32 sm:pb-20 sm:pt-40 lg:px-10 lg:pb-24 lg:pt-48">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           {/* Title on the left */}
-          <div className="max-w-2xl">
+          <Reveal direction="up" delayMs={0} className="max-w-2xl">
             <h2 className="pb-8 font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-5xl">
               The right lifting system starts with the application.
             </h2>
@@ -31,18 +32,18 @@ export default function ProductStorySection() {
               icon={<ArrowRight className="h-4 w-4" />}
               iconPosition="right"
             >
-              Talk to an engineer
+              Know More About Us
             </Button>
-          </div>
+          </Reveal>
 
-          {/* Description and button to the right */}
-          <div className="flex max-w-xl flex-col items-start gap-6 lg:items-start">
+          {/* Description to the right */}
+          <Reveal direction="up" delayMs={150} className="flex max-w-xl flex-col items-start gap-6 lg:items-start">
             <p className="text-base leading-7 text-white/85 lg:text-lg">
               Every lifting environment has different requirements. Capacity,
               duty cycle, headroom, travel distance and operating conditions
               all influence the right equipment.
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
