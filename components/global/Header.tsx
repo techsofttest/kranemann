@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { allEquipmentCategories, ProductCategory } from "@/types/catalogue";
 import { useSearchContext } from "@/context/SearchContext";
 
@@ -11,7 +11,29 @@ type HeaderProps = {
 
 export default function Header({ onOpenSearch }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const { activeCategory, setActiveCategory } = useSearchContext();
+
+  const productMenuLinks = [
+    { label: "Hoist", href: "#categories", category: "Electric chain hoists" as ProductCategory },
+    { label: "End trucks", href: "#categories", category: "All products" as ProductCategory },
+    { label: "Overhead Cranes & Gantry Cranes", href: "#categories", category: "Cranes" as ProductCategory },
+    { label: "Custom Engineered Products", href: "#contact", category: "All products" as ProductCategory },
+    { label: "Automated Cranes", href: "#categories", category: "Cranes" as ProductCategory },
+    { label: "Automation & Controls", href: "#categories", category: "All products" as ProductCategory },
+  ];
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProductsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
@@ -67,12 +89,52 @@ export default function Header({ onOpenSearch }: HeaderProps) {
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">
-          <a
-            href="#products"
-            className="text-sm font-medium transition-opacity hover:opacity-70"
+          {/* Products Dropdown */}
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => setProductsDropdownOpen(true)}
+            onMouseLeave={() => setProductsDropdownOpen(false)}
           >
-            Products
-          </a>
+            <button
+              type="button"
+              onClick={() => setProductsDropdownOpen((prev) => !prev)}
+              aria-expanded={productsDropdownOpen}
+              className="flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-70 focus:outline-none cursor-pointer"
+            >
+              <span>Products</span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${
+                  productsDropdownOpen ? "rotate-180 text-[#E46A2A]" : "text-white/70"
+                }`}
+              />
+            </button>
+
+            {/* Dropdown Menu */}
+            {productsDropdownOpen && (
+              <div className="absolute left-0 top-full z-50 min-w-[280px] pt-3">
+                <div className="overflow-hidden rounded-md border border-white/10 bg-[#1e2022] p-2 shadow-2xl backdrop-blur-md">
+                  {productMenuLinks.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => {
+                        handleCategoryClick(item.category);
+                        setProductsDropdownOpen(false);
+                      }}
+                      className="group flex items-center justify-between rounded-md px-3.5 py-2.5 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+                    >
+                      <span>{item.label}</span>
+                      <span className="text-xs text-[#E46A2A] opacity-0 transition-opacity group-hover:opacity-100">
+                        →
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           <a
             href="#services"
             className="text-sm font-medium transition-opacity hover:opacity-70"
@@ -90,6 +152,12 @@ export default function Header({ onOpenSearch }: HeaderProps) {
             className="text-sm font-medium transition-opacity hover:opacity-70"
           >
             Resources
+          </a>
+          <a
+            href="#news"
+            className="text-sm font-medium transition-opacity hover:opacity-70"
+          >
+            News and updates
           </a>
         </nav>
 
@@ -136,49 +204,79 @@ export default function Header({ onOpenSearch }: HeaderProps) {
             <Menu className="h-6 w-6" />
           )}
         </button>
-      </div>
+      </div >
 
-      {/* Categories Horizontal Draggable Scroll Strip without Icons */}
-      <div className="bg-[#1e2022]">
-        <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-          <div
-            ref={scrollRef}
-            onMouseDown={onMouseDown}
-            onMouseMove={onMouseMove}
-            onMouseUp={onMouseUpOrLeave}
-            onMouseLeave={onMouseUpOrLeave}
-            className="flex cursor-grab select-none items-center gap-2 overflow-x-auto py-2.5 active:cursor-grabbing [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {allEquipmentCategories.map((item) => {
-              const isSelected =
-                activeCategory === item.matchingCategory &&
-                item.matchingCategory !== "All products";
+    {/* Categories Horizontal Draggable Scroll Strip without Icons */ }
+    < div className = "bg-[#1e2022]" >
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
+        <div
+          ref={scrollRef}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUpOrLeave}
+          onMouseLeave={onMouseUpOrLeave}
+          className="flex cursor-grab select-none items-center gap-2 overflow-x-auto py-2.5 active:cursor-grabbing [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {allEquipmentCategories.map((item) => {
+            const isSelected =
+              activeCategory === item.matchingCategory &&
+              item.matchingCategory !== "All products";
 
-              return (
-                <button
-                  key={item.title}
-                  type="button"
-                  onClick={() => handleCategoryClick(item.matchingCategory)}
-                  className={`inline-flex shrink-0 items-center px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-colors ${isSelected
-                    ? "bg-[#E46A2A] text-white"
-                    : "text-white/80 hover:bg-white/10 rounded-md hover:text-white"
-                    }`}
-                >
-                  {item.title}
-                </button>
-              );
-            })}
-          </div>
+            return (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => handleCategoryClick(item.matchingCategory)}
+                className={`inline-flex shrink-0 items-center px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-colors ${isSelected
+                  ? "bg-[#E46A2A] text-white"
+                  : "text-white/80 hover:bg-white/10 rounded-md hover:text-white"
+                  }`}
+              >
+                {item.title}
+              </button>
+            );
+          })}
         </div>
       </div>
+      </div >
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="bg-[#25282A] px-6 py-8 lg:hidden">
-          <nav className="flex flex-col gap-6">
-            <a href="#products" onClick={() => setMobileMenuOpen(false)}>
-              Products
-            </a>
+    {/* Mobile Drawer Menu */ }
+  {
+    mobileMenuOpen && (
+      <div className="bg-[#25282A] px-6 py-8 lg:hidden">
+          <nav className="flex flex-col gap-5">
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                className="flex w-full items-center justify-between text-base font-medium text-white"
+              >
+                <span>Products</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${mobileProductsOpen ? "rotate-180 text-[#E46A2A]" : "text-white/70"
+                    }`}
+                />
+              </button>
+
+              {mobileProductsOpen && (
+                <div className="mt-3 flex flex-col gap-2 border-l border-white/15 pl-4">
+                  {productMenuLinks.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => {
+                        handleCategoryClick(item.category);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="py-1 text-sm text-white/80 transition-colors hover:text-[#E46A2A]"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <a href="#services" onClick={() => setMobileMenuOpen(false)}>
               Services
             </a>
@@ -187,6 +285,9 @@ export default function Header({ onOpenSearch }: HeaderProps) {
             </a>
             <a href="#resources" onClick={() => setMobileMenuOpen(false)}>
               Resources
+            </a>
+            <a href="#news" onClick={() => setMobileMenuOpen(false)}>
+              News and updates
             </a>
             <a
               href="#contact"
@@ -215,8 +316,9 @@ export default function Header({ onOpenSearch }: HeaderProps) {
               ))}
             </div>
           </div>
-        </div>
-      )}
-    </header>
+      </div>
+    )
+  }
+    </header >
   );
 }

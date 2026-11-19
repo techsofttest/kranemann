@@ -86,57 +86,57 @@ export default function CategorySection({
   };
 
   return (
-    <section className="bg-[#F4F2ED] py-12 lg:py-16">
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-        <Reveal>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-8">
-            <div className="max-w-3xl">
-              <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-[#25282A] sm:text-4xl lg:text-5xl">
-                Explore equipment by family.
-              </h2>
+      <section id="categories" className="scroll-mt-10 bg-[#F4F2ED] py-12 lg:py-16">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
+          <Reveal>
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-8">
+              <div className="max-w-3xl">
+                <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-[#25282A] sm:text-4xl lg:text-5xl">
+                  Explore equipment by family.
+                </h2>
+              </div>
+              <span className="text-xs text-[#747773]">{categoryCards.length} equipment categories</span>
             </div>
-            <span className="text-xs text-[#747773]">{categoryCards.length} equipment categories</span>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {categoryCards.map((item, index) => {
-            const isSelected =
-              activeCategory &&
-              activeCategory === item.matchingCategory &&
-              item.matchingCategory !== "All products";
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {categoryCards.map((item, index) => {
+              const isSelected =
+                activeCategory &&
+                activeCategory === item.matchingCategory &&
+                item.matchingCategory !== "All products";
 
-            return (
-              <Reveal key={item.title} delayMs={(index % 6) * 50} className="h-full">
-                <button
-                  type="button"
-                  onClick={() => handleClick(item.matchingCategory)}
-                  className={`group flex h-full w-full flex-col items-center justify-between p-4 text-center transition-all duration-300 ${isSelected
-                    ? "bg-white text-white shadow-md ring-2 ring-[#E46A2A]"
-                    : "bg-white text-[#25282A] hover:-translate-y-1 hover:bg-white hover:shadow-md"
-                    }`}
-                >
-                  <div className="flex h-28 w-full items-center justify-center overflow-hidden bg-white p-2 transition-colors group-hover:bg-white/60">
-                    <img
-                      src={encodeURI(item.image)}
-                      alt={item.title}
-                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <span
-                    className={`mt-3.5 line-clamp-2 text-xs font-medium uppercase tracking-tight sm:text-sm ${isSelected ? "text-white" : "text-[#25282A] group-hover:text-[#E46A2A]"
+              return (
+                <Reveal key={item.title} delayMs={(index % 6) * 50} className="h-full">
+                  <button
+                    type="button"
+                    onClick={() => handleClick(item.matchingCategory)}
+                    className={`group flex h-full w-full flex-col items-center justify-between p-4 text-center transition-all duration-300 ${isSelected
+                      ? "bg-white text-white shadow-md ring-2 ring-[#E46A2A]"
+                      : "bg-white text-[#25282A] hover:-translate-y-1 hover:bg-white hover:shadow-md"
                       }`}
                   >
-                    {item.title}
-                  </span>
-                </button>
-              </Reveal>
-            );
-          })}
+                    <div className="flex h-28 w-full items-center justify-center overflow-hidden bg-white p-2 transition-colors group-hover:bg-white/60">
+                      <img
+                        src={encodeURI(item.image)}
+                        alt={item.title}
+                        className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <span
+                      className={`mt-3.5 line-clamp-2 text-xs font-medium uppercase tracking-tight sm:text-sm ${isSelected ? "text-white" : "text-[#25282A] group-hover:text-[#E46A2A]"
+                        }`}
+                    >
+                      {item.title}
+                    </span>
+                  </button>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+      );
 }

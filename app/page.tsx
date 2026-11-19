@@ -4,12 +4,13 @@ import { useMemo, useState } from "react";
 import HeroSection from "@/components/home/HeroSection";
 import ProductFinderSection from "@/components/home/ProductFinderSection";
 import CategorySection from "@/components/home/CategorySection";
-import BrandsSection from "@/components/home/BrandsSection";
-import ProductCatalogueSection from "@/components/home/ProductCatalogueSection";
+// import BrandsSection from "@/components/home/BrandsSection";
+// import ProductCatalogueSection from "@/components/home/ProductCatalogueSection";
 import ProductStorySection from "@/components/home/ProductStorySection";
 import TrustCapabilitySection from "@/components/home/TrustCapabilitySection";
-import InstructionalVideosSection from "@/components/home/InstructionalVideosSection";
+// import InstructionalVideosSection from "@/components/home/InstructionalVideosSection";
 import ContactSection from "@/components/home/ContactSection";
+import NewsAndUpdatesSection from "@/components/home/NewsAndUpdatesSection";
 import { categories, industries, products, services } from "@/data/catalogue";
 import { useSearchContext } from "@/context/SearchContext";
 
@@ -77,9 +78,9 @@ export default function HomePage() {
         onSelectCategory={setActiveCategory}
       />
 
-      <BrandsSection />
+      {/* <BrandsSection /> */}
 
-      <ProductCatalogueSection
+      {/* <ProductCatalogueSection
         filteredProducts={filteredProducts}
         compareProducts={compareProducts}
         onToggleCompare={toggleCompare}
@@ -88,16 +89,18 @@ export default function HomePage() {
           setSearchQuery("");
           setActiveCategory("All products");
         }}
-      />
+      /> */}
 
       <ProductStorySection />
 
 
       <TrustCapabilitySection />
 
-      <InstructionalVideosSection />
+      {/* <InstructionalVideosSection /> */}
 
       <ContactSection />
+
+      <NewsAndUpdatesSection />
     </main>
   );
 }
