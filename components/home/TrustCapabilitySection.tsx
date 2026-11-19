@@ -8,7 +8,7 @@ export default function TrustCapabilitySection() {
       <div className="mx-auto grid max-w-[1600px] lg:grid-cols-2">
         <div className="relative min-h-[600px] overflow-hidden">
           <img
-            src="/banner/b6.png"
+            src="/banner/b6.jpeg"
             alt="Industrial engineering and manufacturing"
             className="absolute inset-0 h-full w-full object-cover"
           />

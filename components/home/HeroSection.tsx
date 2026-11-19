@@ -20,9 +20,8 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-16 lg:px-10 lg:pb-20">
         <div className="max-w-5xl">
           <h1 className="font-[family-name:var(--font-space-grotesk)] text-5xl leading-[0.98] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
-            Engineered to move
-            <br />
-            what matters.
+            Products Engineered to <br />lift and move safely.
+
           </h1>
 
           <div className="mt-9">
