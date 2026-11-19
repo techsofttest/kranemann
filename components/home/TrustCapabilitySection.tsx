@@ -12,6 +12,8 @@ export default function TrustCapabilitySection() {
             alt="Industrial engineering and manufacturing"
             className="absolute inset-0 h-full w-full object-cover"
           />
+          {/* Subtle dark overlay to dim the image */}
+          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         </div>
 
         <div className="flex flex-col justify-center p-7 sm:p-12 lg:p-20">
