@@ -10,48 +10,48 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#181a1b] text-white">
+    <footer className="bg-[#f0f1f3] text-[#25282A] border-t border-gray-200">
       {/* Top Value / Trust Highlights Strip */}
-      <div className="bg-[#141516]">
+      <div className="bg-[#e7e9ec] border-b border-gray-200">
         <div className="mx-auto max-w-[1600px] px-6 py-9 lg:px-10">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div className="flex items-center gap-4">
-              <ShieldCheck className="h-8 w-8 shrink-0 text-white" />
+              <ShieldCheck className="h-8 w-8 shrink-0 text-[#E46A2A]" />
               <div>
-                <p className="text-sm font-semibold text-white sm:text-base">
+                <p className="text-sm font-semibold text-[#25282A] sm:text-base">
                   OEM certified
                 </p>
-                <p className="text-xs text-white/75 sm:text-sm">100% genuine industrial parts</p>
+                <p className="text-xs text-gray-600 sm:text-sm">100% genuine industrial parts</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <Award className="h-8 w-8 shrink-0 text-white" />
+              <Award className="h-8 w-8 shrink-0 text-[#E46A2A]" />
               <div>
-                <p className="text-sm font-semibold text-white sm:text-base">
+                <p className="text-sm font-semibold text-[#25282A] sm:text-base">
                   EN / ISO 9001 compliant
                 </p>
-                <p className="text-xs text-white/75 sm:text-sm">European safety standards</p>
+                <p className="text-xs text-gray-600 sm:text-sm">European safety standards</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <Clock className="h-8 w-8 shrink-0 text-white" />
+              <Clock className="h-8 w-8 shrink-0 text-[#E46A2A]" />
               <div>
-                <p className="text-sm font-semibold text-white sm:text-base">
+                <p className="text-sm font-semibold text-[#25282A] sm:text-base">
                   24/7 field response
                 </p>
-                <p className="text-xs text-white/75 sm:text-sm">Emergency repairs & servicing</p>
+                <p className="text-xs text-gray-600 sm:text-sm">Emergency repairs & servicing</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <Phone className="h-8 w-8 shrink-0 text-white" />
+              <Phone className="h-8 w-8 shrink-0 text-[#E46A2A]" />
               <div>
-                <p className="text-sm font-semibold text-white sm:text-base">
+                <p className="text-sm font-semibold text-[#25282A] sm:text-base">
                   Direct engineering line
                 </p>
-                <p className="text-xs text-white/75 sm:text-sm">+49 (0) 234 892-0</p>
+                <p className="text-xs text-gray-600 sm:text-sm">Available on request</p>
               </div>
             </div>
           </div>
@@ -64,26 +64,22 @@ export default function Footer() {
           {/* Brand & Mission Column */}
           <div>
             <img
-              src="/logo/logo.png"
-              alt="Kranemann"
-              className="h-20 w-auto object-contain"
+              src="/logo/AWC-logo.png"
+              alt="AWC"
+              className="h-16 w-auto object-contain"
             />
 
-            <p className="mt-5 max-w-sm text-sm leading-6 text-white/80">
-              Kranemann is a specialized manufacturer and supplier of engineered
+            <p className="mt-5 max-w-sm text-sm leading-6 text-gray-600">
+              AWC is a specialized manufacturer and supplier of engineered
               overhead cranes, hoists, radio controls, and comprehensive lifecycle
               maintenance for demanding industrial facilities worldwide.
             </p>
 
-            <div className="mt-6 space-y-2.5 text-xs text-white/80">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="h-4 w-4 shrink-0 text-white mt-0.5" />
-                <span>Kranemann Hebezeuge GmbH, Industriestr. 14, 44866 Bochum, Germany</span>
-              </div>
+            <div className="mt-6 space-y-2.5 text-xs text-gray-600">
               <div className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 shrink-0 text-white" />
-                <a href="mailto:info@kranemann.de" className="transition-colors hover:text-white hover:underline underline-offset-4">
-                  info@kranemann.de
+                <Mail className="h-4 w-4 shrink-0 text-[#E46A2A]" />
+                <a href="mailto:info@AWC.com" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
+                  info@AWC.com
                 </a>
               </div>
             </div>
@@ -95,7 +91,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white/5 text-white/80 transition-all hover:bg-[#0A66C2] hover:text-white hover:scale-105"
+                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white border border-gray-300 text-gray-700 transition-all hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] hover:scale-105"
                 aria-label="LinkedIn"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -108,7 +104,7 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white/5 text-white/80 transition-all hover:bg-[#FF0000] hover:text-white hover:scale-105"
+                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white border border-gray-300 text-gray-700 transition-all hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] hover:scale-105"
                 aria-label="YouTube"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -121,7 +117,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white/5 text-white/80 transition-all hover:bg-black hover:text-white hover:scale-105"
+                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white border border-gray-300 text-gray-700 transition-all hover:bg-black hover:text-white hover:border-black hover:scale-105"
                 aria-label="X / Twitter"
               >
                 <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
@@ -134,7 +130,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white/5 text-white/80 transition-all hover:bg-[#1877F2] hover:text-white hover:scale-105"
+                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white border border-gray-300 text-gray-700 transition-all hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] hover:scale-105"
                 aria-label="Facebook"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -147,7 +143,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white/5 text-white/80 transition-all hover:bg-[#E4405F] hover:text-white hover:scale-105"
+                className="flex h-9 w-9 items-center justify-center rounded-sm bg-white border border-gray-300 text-gray-700 transition-all hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F] hover:scale-105"
                 aria-label="Instagram"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -159,43 +155,43 @@ export default function Footer() {
 
           {/* Product Lines Column */}
           <div>
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-[#25282A]">
               Equipment lines
             </p>
 
-            <ul className="mt-5 space-y-2.5 text-sm text-white/85">
+            <ul className="mt-5 space-y-2.5 text-sm text-gray-600">
               <li>
-                <a href="#products" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#products" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Electric chain hoists
                 </a>
               </li>
               <li>
-                <a href="#products" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#products" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Manual chain blocks
                 </a>
               </li>
               <li>
-                <a href="#products" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#products" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Heavy wire rope hoists
                 </a>
               </li>
               <li>
-                <a href="#products" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#products" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Overhead bridge cranes
                 </a>
               </li>
               <li>
-                <a href="#products" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#products" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Portal gantry systems
                 </a>
               </li>
               <li>
-                <a href="#products" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#products" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Motor drives & inverters
                 </a>
               </li>
               <li>
-                <a href="#products" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#products" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Spreader beams & hooks
                 </a>
               </li>
@@ -204,43 +200,43 @@ export default function Footer() {
 
           {/* Lifecycle Services Column */}
           <div>
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-[#25282A]">
               Lifecycle services
             </p>
 
-            <ul className="mt-5 space-y-2.5 text-sm text-white/85">
+            <ul className="mt-5 space-y-2.5 text-sm text-gray-600">
               <li>
-                <a href="#services" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#services" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Field repair & emergency
                 </a>
               </li>
               <li>
-                <a href="#services" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#services" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Annual safety inspections
                 </a>
               </li>
               <li>
-                <a href="#services" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#services" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Load testing & recertification
                 </a>
               </li>
               <li>
-                <a href="#services" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#services" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Crane modernization
                 </a>
               </li>
               <li>
-                <a href="#services" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#services" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   OEM replacement parts
                 </a>
               </li>
               <li>
-                <a href="#services" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#services" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Preventative maintenance
                 </a>
               </li>
               <li>
-                <a href="#resources" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#resources" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Technical documentation
                 </a>
               </li>
@@ -249,43 +245,43 @@ export default function Footer() {
 
           {/* Company & Compliance Column */}
           <div>
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-[#25282A]">
               Company & legal
             </p>
 
-            <ul className="mt-5 space-y-2.5 text-sm text-white/85">
+            <ul className="mt-5 space-y-2.5 text-sm text-gray-600">
               <li>
-                <a href="#industries" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#industries" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Industries served
                 </a>
               </li>
               <li>
-                <a href="#contact" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#contact" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Request an RFQ quote
                 </a>
               </li>
               <li>
-                <a href="#contact" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#contact" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Consult an engineer
                 </a>
               </li>
               <li>
-                <a href="#" className="transition-colors hover:text-white hover:underline underline-offset-4">
-                  About Kranemann
+                <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
+                  About AWC
                 </a>
               </li>
               <li>
-                <a href="#" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Quality & safety standards
                 </a>
               </li>
               <li>
-                <a href="#" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Terms & conditions
                 </a>
               </li>
               <li>
-                <a href="#" className="transition-colors hover:text-white hover:underline underline-offset-4">
+                <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
                   Privacy policy
                 </a>
               </li>
@@ -294,54 +290,54 @@ export default function Footer() {
 
           {/* Direct RFQ Column */}
           <div>
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-[#25282A]">
               Technical inquiries
             </p>
 
-            <p className="mt-5 text-sm leading-6 text-white/80">
+            <p className="mt-5 text-sm leading-6 text-gray-600">
               Need technical sizing, crane span drawings, or a replacement quote? Speak with our engineering desk.
             </p>
 
             <a
               href="#contact"
-              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-5 py-3 text-xs font-semibold text-[#181a1b] transition-colors hover:bg-white/90"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#25282A] px-5 py-3 text-xs font-semibold text-white transition-colors hover:bg-black"
             >
               <span>Submit RFQ specification</span>
-              <ArrowRight className="h-3.5 w-3.5" />
+              <ArrowRight className="h-3.5 w-3.5 text-[#E46A2A]" />
             </a>
 
-            <div className="mt-6 pt-2 text-xs text-white/70">
-              <p className="font-semibold text-white">Headquarters office hours</p>
-              <p className="mt-1">Monday – Friday: 07:30 – 17:30 CET</p>
-              <p className="mt-0.5 text-white/60">24/7 hotline for contract clients</p>
+            <div className="mt-6 pt-2 text-xs text-gray-600">
+              <p className="font-semibold text-[#25282A]">Office hours</p>
+              <p className="mt-1">Monday – Friday: 07:30 – 17:30</p>
+              <p className="mt-0.5 text-gray-500">24/7 hotline for contract clients</p>
             </div>
           </div>
         </div>
 
         {/* Bottom Legal, Attribution & Copyright */}
-        <div className="mt-14 flex flex-col gap-4 pt-8 text-xs text-white/75 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Kranemann Hebezeuge GmbH. All rights reserved.</p>
+        <div className="mt-14 flex flex-col gap-4 border-t border-gray-200/80 pt-8 text-xs text-gray-600 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 AWC. All rights reserved.</p>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs text-white/80 sm:gap-6">
-            <a href="#" className="transition-colors hover:text-white hover:underline underline-offset-4">
-              Imprint (Impressum)
+          <div className="flex flex-wrap items-center gap-4 text-xs text-gray-600 sm:gap-6">
+            <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
+              Legal notice
             </a>
             <span>•</span>
-            <a href="#" className="transition-colors hover:text-white hover:underline underline-offset-4">
+            <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
               Data privacy
             </a>
             <span>•</span>
-            <a href="#" className="transition-colors hover:text-white hover:underline underline-offset-4">
-              General terms (AGB)
+            <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
+              General terms
             </a>
             <span>•</span>
             <a
               href="https://www.techsoftweb.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-normal transition-colors hover:text-white hover:underline underline-offset-4"
+              className="font-normal transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4"
             >
-              Web Design Company in Kochi Techsoft
+              Web Design Company Techsoft
             </a>
           </div>
         </div>

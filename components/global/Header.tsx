@@ -55,39 +55,39 @@ export default function Header({ onOpenSearch }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#25282A] text-white shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-[#f8f9fa] text-[#25282A] border-b border-gray-200/80 shadow-xs">
       {/* Top Main Navigation Bar */}
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 lg:px-10">
         <a href="#" className="shrink-0">
           <img
-            src="/logo/logo.png"
-            alt="Kranemann"
-            className="h-16 w-auto object-contain"
+            src="/logo/AWC-logo.png"
+            alt="AWC"
+            className="h-16 py-4 w-auto object-contain"
           />
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">
           <a
             href="#products"
-            className="text-sm font-medium transition-opacity hover:opacity-70"
+            className="text-sm font-medium text-[#25282A] transition-colors hover:text-[#E46A2A]"
           >
             Products
           </a>
           <a
             href="#services"
-            className="text-sm font-medium transition-opacity hover:opacity-70"
+            className="text-sm font-medium text-[#25282A] transition-colors hover:text-[#E46A2A]"
           >
             Services
           </a>
           <a
             href="#industries"
-            className="text-sm font-medium transition-opacity hover:opacity-70"
+            className="text-sm font-medium text-[#25282A] transition-colors hover:text-[#E46A2A]"
           >
             Industries
           </a>
           <a
             href="#resources"
-            className="text-sm font-medium transition-opacity hover:opacity-70"
+            className="text-sm font-medium text-[#25282A] transition-colors hover:text-[#E46A2A]"
           >
             Resources
           </a>
@@ -96,18 +96,18 @@ export default function Header({ onOpenSearch }: HeaderProps) {
         <div className="hidden items-center gap-3 lg:flex">
           <button
             onClick={onOpenSearch}
-            className="flex w-52 items-center justify-between rounded-sm border border-white bg-white/5 px-4 py-2.5 text-xs font-medium text-white/80 transition-colors hover:border-white/30 hover:bg-white/10 hover:text-white"
+            className="flex w-52 items-center justify-between rounded-sm border border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-gray-600 transition-colors hover:border-[#E46A2A] hover:text-[#25282A]"
             aria-label="Search"
           >
             <span className="flex items-center gap-2.5">
-              <Search className="h-4 w-4 text-white" />
+              <Search className="h-4 w-4 text-gray-500" />
               <span>Search equipment...</span>
             </span>
           </button>
 
           <a
             href="#contact"
-            className="relative flex h-10 w-10 items-center justify-center rounded-sm border border-white/20 bg-white/5 text-white transition-colors hover:border-white/40 hover:bg-white/10"
+            className="relative flex h-10 w-10 items-center justify-center rounded-sm border border-gray-300 bg-white text-[#25282A] transition-colors hover:border-[#E46A2A] hover:text-[#E46A2A]"
             aria-label="Shopping Cart"
           >
             <ShoppingBag className="h-4 w-4" />
@@ -118,7 +118,7 @@ export default function Header({ onOpenSearch }: HeaderProps) {
 
           <a
             href="#contact"
-            className="flex h-10 w-10 items-center justify-center rounded-sm border border-white/20 bg-white/5 text-white transition-colors hover:border-white/40 hover:bg-white/10"
+            className="flex h-10 w-10 items-center justify-center rounded-sm border border-gray-300 bg-white text-[#25282A] transition-colors hover:border-[#E46A2A] hover:text-[#E46A2A]"
             aria-label="User Account"
           >
             <User className="h-4 w-4" />
@@ -127,7 +127,7 @@ export default function Header({ onOpenSearch }: HeaderProps) {
 
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-11 w-11 items-center justify-center lg:hidden"
+          className="flex h-11 w-11 items-center justify-center text-[#25282A] lg:hidden"
           aria-label="Open navigation"
         >
           {mobileMenuOpen ? (
@@ -139,7 +139,7 @@ export default function Header({ onOpenSearch }: HeaderProps) {
       </div>
 
       {/* Categories Horizontal Draggable Scroll Strip without Icons */}
-      <div className="bg-[#1e2022]">
+      <div className="bg-[#eeeff1] border-b border-gray-200">
         <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
           <div
             ref={scrollRef}
@@ -159,9 +159,9 @@ export default function Header({ onOpenSearch }: HeaderProps) {
                   key={item.title}
                   type="button"
                   onClick={() => handleCategoryClick(item.matchingCategory)}
-                  className={`inline-flex shrink-0 items-center px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-colors ${isSelected
-                    ? "bg-[#E46A2A] text-white"
-                    : "text-white/80 hover:bg-white/10 rounded-md hover:text-white"
+                  className={`inline-flex shrink-0 items-center px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors rounded-md ${isSelected
+                    ? "bg-[#E46A2A] text-white shadow-xs"
+                    : "text-gray-700 hover:bg-white/80 hover:text-black"
                     }`}
                 >
                   {item.title}
@@ -174,32 +174,32 @@ export default function Header({ onOpenSearch }: HeaderProps) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="bg-[#25282A] px-6 py-8 lg:hidden">
+        <div className="bg-[#f8f9fa] border-b border-gray-200 px-6 py-8 lg:hidden">
           <nav className="flex flex-col gap-6">
-            <a href="#products" onClick={() => setMobileMenuOpen(false)}>
+            <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-[#25282A] font-medium hover:text-[#E46A2A]">
               Products
             </a>
-            <a href="#services" onClick={() => setMobileMenuOpen(false)}>
+            <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-[#25282A] font-medium hover:text-[#E46A2A]">
               Services
             </a>
-            <a href="#industries" onClick={() => setMobileMenuOpen(false)}>
+            <a href="#industries" onClick={() => setMobileMenuOpen(false)} className="text-[#25282A] font-medium hover:text-[#E46A2A]">
               Industries
             </a>
-            <a href="#resources" onClick={() => setMobileMenuOpen(false)}>
+            <a href="#resources" onClick={() => setMobileMenuOpen(false)} className="text-[#25282A] font-medium hover:text-[#E46A2A]">
               Resources
             </a>
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 bg-[#E46A2A] px-5 py-3 text-center text-white transition-colors hover:bg-[#C95720]"
+              className="mt-2 bg-[#E46A2A] px-5 py-3 text-center text-white transition-colors hover:bg-[#C95720] rounded-sm font-medium"
             >
               Talk to an expert
             </a>
           </nav>
 
           {/* Mobile Category Quick Links */}
-          <div className="mt-8 border-t border-white/10 pt-6">
-            <p className="mb-4 text-xs font-medium uppercase tracking-wider text-[#E46A2A]">
+          <div className="mt-8 border-t border-gray-200 pt-6">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#E46A2A]">
               Product Categories
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -208,7 +208,7 @@ export default function Header({ onOpenSearch }: HeaderProps) {
                   key={item.title}
                   type="button"
                   onClick={() => handleCategoryClick(item.matchingCategory)}
-                  className="p-2 text-left text-xs text-white/80 hover:text-white"
+                  className="p-2 text-left text-xs text-gray-700 hover:text-black"
                 >
                   <span className="line-clamp-1">{item.title}</span>
                 </button>

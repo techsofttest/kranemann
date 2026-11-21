@@ -16,7 +16,7 @@ export default function TrustCapabilitySection() {
 
         <div className="flex flex-col justify-center p-7 sm:p-12 lg:p-20">
           <Reveal>
-            <SectionLabel className="mb-4">Why Kranemann</SectionLabel>
+            <SectionLabel className="mb-4">Why AWC</SectionLabel>
             <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-medium tracking-tight text-[#25282A] sm:text-4xl lg:text-5xl">
               Specify. Supply. Maintain. Modernize.
             </h2>

@@ -16,9 +16,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Kranemann | Engineered lifting systems",
+  title: "AWC | Engineered lifting systems",
   description:
-    "Kranemann provides cranes, hoists, material handling equipment, components, inspections, maintenance and lifecycle support for demanding industrial applications.",
+    "AWC provides cranes, hoists, material handling equipment, components, inspections, maintenance and lifecycle support for demanding industrial applications.",
 };
 
 export default function RootLayout({

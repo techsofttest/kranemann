@@ -20,7 +20,7 @@ const productCatalogMeta: Record<
   }
 > = {
   1: {
-    brand: "Kranemann Industrial",
+    brand: "AWC Industrial",
     fullName:
       "Heavy Duty Compact Electric Chain Hoist with Overload Protection & Motorized Trolley",
     price: "$850 – $1,800",
@@ -56,7 +56,7 @@ const productCatalogMeta: Record<
     price: "$4,500 – $11,200",
   },
   7: {
-    brand: "Kranemann Heavy Cranes",
+    brand: "AWC Heavy Cranes",
     fullName:
       "Custom Overhead Bridge Crane Complete System with Bridge Beam, Hoist & Electrification",
     price: "$12,000 – $48,000",
@@ -83,7 +83,7 @@ const productCatalogMeta: Record<
 
 export default function ProductCard({ product }: ProductCardProps) {
   const meta = productCatalogMeta[product.id] || {
-    brand: "Kranemann Industrial",
+    brand: "AWC Industrial",
     fullName: `${product.name} ${product.description}`,
     price: "$1,200 – $3,500",
   };
