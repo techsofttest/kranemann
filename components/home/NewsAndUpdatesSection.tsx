@@ -19,7 +19,7 @@ interface NewsItem {
 const newsArticles: NewsItem[] = [
   {
     id: "1",
-    title: "Kranemann Launches High-Capacity Heavy Duty Wire Rope Hoist Series",
+    title: "AWC Launches High-Capacity Heavy Duty Wire Rope Hoist Series",
     category: "Product Release",
     date: "November 14, 2026",
     readTime: "4 min read",
@@ -41,7 +41,7 @@ const newsArticles: NewsItem[] = [
   },
   {
     id: "3",
-    title: "Updated European Standard EN 15011: What Crane Operators Need to Know",
+    title: "Updated Crane Safety & Load Standards: What Operators Need to Know",
     category: "Safety & Compliance",
     date: "October 29, 2026",
     readTime: "5 min read",
