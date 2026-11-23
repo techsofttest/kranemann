@@ -12,7 +12,7 @@ export default function HeroSection() {
         poster="/home-hero/mock.jpg"
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/home-hero/b2.mp4" type="video/mp4" />
+        <source src="/home-hero/b3.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
