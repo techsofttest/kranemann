@@ -329,15 +329,7 @@ export default function Footer() {
             <a href="#" className="transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4">
               Terms & conditions
             </a>
-            <span>•</span>
-            <a
-              href="https://www.techsoftweb.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-normal transition-colors hover:text-[#E46A2A] hover:underline underline-offset-4"
-            >
-              Web Design Company in Kochi Techsoft
-            </a>
+
           </div>
         </div>
       </div>
