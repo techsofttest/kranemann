@@ -86,13 +86,13 @@ export default function ProductFinderSection() {
             <div className="flex flex-1 flex-col justify-start">
               <div className="flex items-start justify-between gap-2">
                 <h2 className="text-lg font-medium tracking-tight text-white sm:text-xl lg:text-2xl">
-                  Get expert help
+                  Get Instent Quotes
                 </h2>
                 <ArrowUpRight className="h-5 w-5 shrink-0 text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
 
               <p className="mt-1.5 text-xs leading-5 text-white/90 sm:text-sm">
-                Not sure which equipment fits? Talk directly with our team.
+                Get Instent Quote of Standard Products in 24 hours.
               </p>
             </div>
           </a>
